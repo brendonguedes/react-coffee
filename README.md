@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="https://f002.backblazeb2.com/file/adolfofonzar/logo-react-coffee.png">
+</div>
+
 # React Coffee
 
 🇧🇷 **Para brasileiros**
