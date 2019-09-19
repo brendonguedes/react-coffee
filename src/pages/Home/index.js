@@ -1,119 +1,47 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { GiCoffeeBeans } from 'react-icons/gi';
+import { formatPrice } from '../../util/format';
+import api from '../../services/api';
 
 import { ProductList } from './styles';
 
-export default function Home() {
-  return (
-    <ProductList>
-      <li>
-        <img
-          src="https://f002.backblazeb2.com/file/adolfofonzar/react-coffee_product-demo.jpg"
-          alt="Product Demo"
-        />
-        <strong>
-          Café Orfeu Microlote Bourbon/Arara Torrado em Grãos 250g
-        </strong>
-        <span>R$ 56,90</span>
+export default class Home extends Component {
+  state = {
+    products: [],
+  };
 
-        <button type="button">
-          <div>
-            <GiCoffeeBeans size={16} color="#f6f1ec" /> 3
-          </div>
+  async componentDidMount() {
+    const response = await api.get('products');
 
-          <span>COLOCAR NA SACOLA</span>
-        </button>
-      </li>
-      <li>
-        <img
-          src="https://f002.backblazeb2.com/file/adolfofonzar/react-coffee_product-demo.jpg"
-          alt="Product Demo"
-        />
-        <strong>
-          Café Orfeu Microlote Bourbon/Arara Torrado em Grãos 250g
-        </strong>
-        <span>R$ 56,90</span>
+    const data = response.data.map(product => ({
+      ...product,
+      priceFormatted: formatPrice(product.price),
+    }));
 
-        <button type="button">
-          <div>
-            <GiCoffeeBeans size={16} color="#f6f1ec" /> 3
-          </div>
+    this.setState({ products: data });
+  }
 
-          <span>COLOCAR NA SACOLA</span>
-        </button>
-      </li>
-      <li>
-        <img
-          src="https://f002.backblazeb2.com/file/adolfofonzar/react-coffee_product-demo.jpg"
-          alt="Product Demo"
-        />
-        <strong>
-          Café Orfeu Microlote Bourbon/Arara Torrado em Grãos 250g
-        </strong>
-        <span>R$ 56,90</span>
+  render() {
+    const { products } = this.state;
 
-        <button type="button">
-          <div>
-            <GiCoffeeBeans size={16} color="#f6f1ec" /> 3
-          </div>
+    return (
+      <ProductList>
+        {products.map(product => (
+          <li key={product.id}>
+            <img src={product.image} alt={product.title} />
+            <strong>{product.title}</strong>
+            <span>{product.priceFormatted}</span>
 
-          <span>COLOCAR NA SACOLA</span>
-        </button>
-      </li>
-      <li>
-        <img
-          src="https://f002.backblazeb2.com/file/adolfofonzar/react-coffee_product-demo.jpg"
-          alt="Product Demo"
-        />
-        <strong>
-          Café Orfeu Microlote Bourbon/Arara Torrado em Grãos 250g
-        </strong>
-        <span>R$ 56,90</span>
+            <button type="button">
+              <div>
+                <GiCoffeeBeans size={16} color="#f6f1ec" /> 3
+              </div>
 
-        <button type="button">
-          <div>
-            <GiCoffeeBeans size={16} color="#f6f1ec" /> 3
-          </div>
-
-          <span>COLOCAR NA SACOLA</span>
-        </button>
-      </li>
-      <li>
-        <img
-          src="https://f002.backblazeb2.com/file/adolfofonzar/react-coffee_product-demo.jpg"
-          alt="Product Demo"
-        />
-        <strong>
-          Café Orfeu Microlote Bourbon/Arara Torrado em Grãos 250g
-        </strong>
-        <span>R$ 56,90</span>
-
-        <button type="button">
-          <div>
-            <GiCoffeeBeans size={16} color="#f6f1ec" /> 3
-          </div>
-
-          <span>COLOCAR NA SACOLA</span>
-        </button>
-      </li>
-      <li>
-        <img
-          src="https://f002.backblazeb2.com/file/adolfofonzar/react-coffee_product-demo.jpg"
-          alt="Product Demo"
-        />
-        <strong>
-          Café Orfeu Microlote Bourbon/Arara Torrado em Grãos 250g
-        </strong>
-        <span>R$ 56,90</span>
-
-        <button type="button">
-          <div>
-            <GiCoffeeBeans size={16} color="#f6f1ec" /> 3
-          </div>
-
-          <span>COLOCAR NA SACOLA</span>
-        </button>
-      </li>
-    </ProductList>
-  );
+              <span>COLOCAR NA SACOLA</span>
+            </button>
+          </li>
+        ))}
+      </ProductList>
+    );
+  }
 }
