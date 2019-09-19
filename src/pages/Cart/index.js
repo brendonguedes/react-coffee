@@ -7,6 +7,7 @@ import {
   MdDelete,
 } from 'react-icons/md';
 
+import history from '../../services/history';
 import { formatPrice } from '../../util/format';
 
 import * as CartActions from '../../store/modules/cart/actions';
@@ -72,8 +73,15 @@ function Cart({ cart, total, removeFromCart, updateAmountRequest }) {
       </ProductTable>
 
       <footer>
+        <button
+          type="button"
+          onClick={() => {
+            history.push('/');
+          }}
+        >
+          Continuar comprando
+        </button>
         <button type="button">Finalizar pedido</button>
-
         <Total>
           <span>TOTAL</span>
           <strong>{total}</strong>
