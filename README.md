@@ -25,7 +25,6 @@ This project implements the **front end** of a specialty coffee e-commerce using
 
 `yarn start`
 
+and
 
-Fake API 👇🏻
-
-`yarn json-server db.json -p 3333 -w`
+Be <s>Happy</s> Coffee!

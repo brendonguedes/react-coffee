@@ -45,11 +45,11 @@ export default function Cart() {
       <ProductTable>
         <thead>
           <tr>
-            <th />
+            <th label="image" />
             <th>PRODUTO</th>
             <th>QUANTIDADE</th>
             <th>SUBTOTAL</th>
-            <th />
+            <th label="trash" />
           </tr>
         </thead>
         <tbody>
