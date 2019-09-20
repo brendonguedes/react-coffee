@@ -28,4 +28,4 @@ This project implements the **front end** of a specialty coffee e-commerce using
 
 Fake API 👇🏻
 
-`yarn json-server server.json -p 3333 -w`
+`yarn json-server db.json -p 3333 -w`

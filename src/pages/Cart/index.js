@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 import {
   MdRemoveCircleOutline,
   MdAddCircleOutline,
@@ -99,7 +100,14 @@ export default function Cart() {
         >
           Continuar comprando
         </button>
-        <button type="button">Finalizar pedido</button>
+        <button
+          type="button"
+          onClick={() =>
+            toast.error('Loja demo, você não pode finalizar o pedido.')
+          }
+        >
+          Finalizar pedido
+        </button>
         <Total>
           <span>TOTAL</span>
           <strong>{total}</strong>
