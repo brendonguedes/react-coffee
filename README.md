@@ -15,3 +15,17 @@ Esse projeto implementa o front-end de uma loja virtual (e-commerce) de cafés e
 *This **study project** implements a flux architecture in **ReactJS** using **Redux** and **Redux Saga**.*
 
 This project implements the **front end** of a specialty coffee e-commerce using **ReactJS** with **Redux** and **Redux Saga**.
+
+# To Launch 🚀
+
+
+`git clone repo`
+
+`yarn`
+
+`yarn start`
+
+
+Fake API 👇🏻
+
+`yarn json-server server.json -p 3333 -w`
